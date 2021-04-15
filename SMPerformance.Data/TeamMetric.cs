@@ -13,16 +13,6 @@ namespace SMPerformance.Data
         Q1, Q2, Q3, Q4
     }
 
-    public enum CustomerRating
-    {
-        NeedsImprovement, BelowAverage, Average, AboveAverage, ExceedsExpectations
-    }
-
-    public enum TrustRating
-    {
-        NoTrust, LowTrust, NeutralTrust, EstablishingTrust, HighTrust
-    }
-
     public enum PerformanceRating
     {
        NotRated, NeedsImprovement, BelowAverage, Average, AboveAverage, ExceedsExpectations
@@ -54,14 +44,26 @@ namespace SMPerformance.Data
         public double ProdSupport { get; set; }
 
         [Required]
-        public CustomerRating RatingFromCustomer { get; set; }
+        [Range(1, 5, ErrorMessage = "Please chose a number between 1 and 5")]
+        public int CustomerRating { get; set; }
 
+        [Range(1, 5, ErrorMessage = "Please chose a number between 1 and 5")]
         [Required]
-        public TrustRating RatingOfTrust { get; set; }
+        public int TrustRating { get; set; }
 
         [Required]
         public PerformanceRating RatingOfPerformance { get; set; }
-        
+
+        [Required]
+        [ForeignKey(nameof(scrumMaster))]
+        public int ScrumMasterId { get; set; }
+
+        public virtual ScrumMaster scrumMaster{ get; set; }
+
+        [Required]
+        [ForeignKey(nameof(scrumTeam))]
+        public int TeamId { get; set; }
+        public virtual ScrumTeam scrumTeam { get; set; }
 
     }
 }

@@ -18,5 +18,7 @@ namespace SMPerformance.Data
         [Required]
         public string LastName { get; set; }
 
-       }
+        public ICollection<TeamMetric> TeamMetrics { get; set; }
+
+    }
 }

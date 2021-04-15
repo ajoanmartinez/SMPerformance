@@ -19,8 +19,7 @@ namespace SMPerformance.Data
         [Required]
         public DateTime DateCreated { get; set; }
 
-        [Required]
-        public int ScrumMaster { get; set; }
+        public ICollection<TeamMetric> TeamMetrics { get; set; }
 
     }
 }
