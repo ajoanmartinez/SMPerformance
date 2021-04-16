@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMPerformance.Data
+namespace SMPerformance.Models
 {
-    public class ScrumTeam
+    public class ScrumTeamCreate
     {
-        [Key]
-        public int TeamId { get; set; }
-
         [Required]
+        [Display(Name = "Team Name")]
         public string TeamName { get; set; }
 
-        [Required]
+        [Display(Name = "Date Team Created")]
         public DateTime DateCreated { get; set; }
-
-        public ICollection<TeamMetric> TeamMetrics { get; set; }
 
     }
 }

@@ -16,5 +16,24 @@ namespace SMPerformance.WebMVC.Controllers
             var model = new ScrumTeamListItem[0];
             return View(model);
         }
+
+        // GET: Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ScrumTeamCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
+
     }
 }
