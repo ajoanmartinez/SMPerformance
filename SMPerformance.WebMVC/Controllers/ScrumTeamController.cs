@@ -49,6 +49,15 @@ namespace SMPerformance.WebMVC.Controllers
 
         }
 
+        // GET: ScrumTeam/id
+        public ActionResult Details(int id)
+        {
+            var svc = CreateScrumTeamService();
+            var model = svc.GetScrumTeamById(id);
+
+            return View(model);
+        }
+
         private ScrumTeamService CreateScrumTeamService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

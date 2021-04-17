@@ -54,5 +54,23 @@ namespace SMPerformance.Services
                 return query.ToArray();
             }
         }
+
+        public ScrumTeamDetail GetScrumTeamById(int id)
+        {
+            using (var  ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumTeams
+                        .Single(e => e.TeamId == id && e.OwnerId == _userId);
+                return
+                    new ScrumTeamDetail
+                    {
+                        TeamId = entity.TeamId,
+                        TeamName = entity.TeamName,
+                        DateCreated = entity.DateCreated
+                    };
+            }
+        }
     }
 }
