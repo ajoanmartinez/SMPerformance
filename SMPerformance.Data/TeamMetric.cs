@@ -23,6 +23,9 @@ namespace SMPerformance.Data
         public int EvalId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public int Team { get; set; }
 
         [Required]

@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202104160019003_InitialMigration.Designer.cs">
       <DependentUpon>202104160019003_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104171716430_OnwnerIDMigration.cs" />
+    <Compile Include="Migrations\202104171716430_OnwnerIDMigration.Designer.cs">
+      <DependentUpon>202104171716430_OnwnerIDMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrumMaster.cs" />
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104160019003_InitialMigration.resx">
       <DependentUpon>202104160019003_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171716430_OnwnerIDMigration.resx">
+      <DependentUpon>202104171716430_OnwnerIDMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

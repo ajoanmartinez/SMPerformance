@@ -48,10 +48,10 @@ namespace SMPerformance.Services
                                 {
                                     TeamId = e.TeamId,
                                     TeamName = e.TeamName,
-                                    DateCreated = e.Datecreated
+                                    DateCreated = e.DateCreated
                                 }
                             );
-                return query.Toarray();
+                return query.ToArray();
             }
         }
     }

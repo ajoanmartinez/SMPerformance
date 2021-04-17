@@ -11,6 +11,9 @@ namespace SMPerformance.Data
     {
         [Key]
         public int ScrumMasterId { get; set; }
+        
+        [Required]
+        public Guid OwnerId { get; set; }
 
         [Required]
         public string FirstName { get; set; }
