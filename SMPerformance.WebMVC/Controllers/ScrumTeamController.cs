@@ -33,18 +33,27 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ScrumTeamCreate model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
+           
+            var service = CreateScrumTeamService();
 
+            if (service.CreateScrumTeam(model))
+            {
+                TempData["SaveResult"] = "Your team was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Team could not be created.");
+
+            return View(model);
+
+        }
+
+        private ScrumTeamService CreateScrumTeamService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ScrumTeamService(userId);
-
-            service.CreateScrumTeam(model);
-
-            return RedirectToAction("Index");
-            
+            return service;
         }
     }
 }
