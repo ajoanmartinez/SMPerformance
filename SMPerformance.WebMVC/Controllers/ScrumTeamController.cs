@@ -1,4 +1,6 @@
-﻿using SMPerformance.Models;
+﻿using Microsoft.AspNet.Identity;
+using SMPerformance.Models;
+using SMPerformance.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace SMPerformance.WebMVC.Controllers
         // GET: ScrumTeam
         public ActionResult Index()
         {
-            var model = new ScrumTeamListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ScrumTeamService(userId);
+            var model = service.GetScrumTeams();
+
             return View(model);
         }
 
@@ -28,12 +33,18 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ScrumTeamCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
-        }
 
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ScrumTeamService(userId);
+
+            service.CreateScrumTeam(model);
+
+            return RedirectToAction("Index");
+            
+        }
     }
 }
