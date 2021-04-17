@@ -55,10 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrumTeamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMPerformance.Data\SMPerformance.Data.csproj">
+      <Project>{c29fa33a-f82a-40db-a9e4-d0bd083d6dcc}</Project>
+      <Name>SMPerformance.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMPerformance.Models\SMPerformance.Models.csproj">
+      <Project>{1e4772d6-edf4-4d5e-a66b-ae5a3034336a}</Project>
+      <Name>SMPerformance.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
