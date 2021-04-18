@@ -72,5 +72,22 @@ namespace SMPerformance.Services
                     };
             }
         }
+
+        public bool UpdateScrumTeam(ScrumTeamEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumTeams
+                        .Single(e => e.TeamId == model.TeamId && e.OwnerId == _userId);
+
+                entity.TeamName = model.TeamName;
+                entity.DateCreated = model.DateCreated;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }

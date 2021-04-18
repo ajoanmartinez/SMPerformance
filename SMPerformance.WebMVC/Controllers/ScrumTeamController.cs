@@ -58,6 +58,22 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // PUT: Edit
+        public ActionResult Edit(int id)
+        {
+            var service = CreateScrumTeamService();
+            var detail = service.GetScrumTeamById(id);
+            var model =
+                new ScrumTeamEdit
+                {
+                    TeamId = detail.TeamId,
+                    TeamName = detail.TeamName,
+                    DateCreated = detail.DateCreated
+                };
+
+            return View(model);
+        }
+
         private ScrumTeamService CreateScrumTeamService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
