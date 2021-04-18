@@ -74,6 +74,31 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // POST: Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ScrumTeamEdit model)
+        {
+            if(!ModelState.IsValid) return View(model);
+
+            if(model.TeamId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateScrumTeamService();
+
+            if (service.UpdateScrumTeam(model))
+            {
+                TempData["SaveResult"] = "Your scrum team was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your scrum team could not be updated.");
+            return View();
+        }
+
         private ScrumTeamService CreateScrumTeamService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
