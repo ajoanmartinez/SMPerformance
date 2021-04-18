@@ -89,5 +89,20 @@ namespace SMPerformance.Services
 
             }
         }
+
+        public bool DeleteScrumTeam(int teamId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumTeams
+                        .Single(e => e.TeamId == teamId && e.OwnerId == _userId);
+
+                ctx.ScrumTeams.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

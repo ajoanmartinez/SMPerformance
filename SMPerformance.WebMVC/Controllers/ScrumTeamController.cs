@@ -58,7 +58,7 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
-        // PUT: Edit
+        // GET: Edit
         public ActionResult Edit(int id)
         {
             var service = CreateScrumTeamService();
@@ -98,6 +98,30 @@ namespace SMPerformance.WebMVC.Controllers
             ModelState.AddModelError("", "Your scrum team could not be updated.");
             return View();
         }
+
+        // GET: Delete
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateScrumTeamService();
+            var model = svc.GetScrumTeamById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateScrumTeamService();
+
+            service.DeleteScrumTeam(id);
+
+            TempData["SaveResult"] = "Your scrum team was deleted";
+
+            return RedirectToAction("Index");
+        }
+
 
         private ScrumTeamService CreateScrumTeamService()
         {

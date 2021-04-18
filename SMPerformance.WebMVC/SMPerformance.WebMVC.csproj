@@ -239,6 +239,7 @@
     <Content Include="Views\ScrumTeam\Create.cshtml" />
     <Content Include="Views\ScrumTeam\Details.cshtml" />
     <Content Include="Views\ScrumTeam\Edit.cshtml" />
+    <Content Include="Views\ScrumTeam\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
