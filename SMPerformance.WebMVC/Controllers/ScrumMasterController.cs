@@ -16,5 +16,25 @@ namespace SMPerformance.WebMVC.Controllers
             var model = new ScrumMasterListItem[0];
             return View(model);
         }
+
+        // GET: Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ScrumMasterCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(model);
+        }
     }
+
+    
 }
