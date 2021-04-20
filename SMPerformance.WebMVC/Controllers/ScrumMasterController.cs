@@ -1,4 +1,6 @@
-﻿using SMPerformance.Models;
+﻿using Microsoft.AspNet.Identity;
+using SMPerformance.Models;
+using SMPerformance.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace SMPerformance.WebMVC.Controllers
         // GET: ScrumMaster
         public ActionResult Index()
         {
-            var model = new ScrumMasterListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ScrumMasterService(userId);
+            var model = service.GetScrumMasters();
+
             return View(model);
         }
 
@@ -27,14 +32,17 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ScrumMasterCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                return View(model);
             }
 
-            return View(model);
-        }
-    }
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ScrumMasterService(userId);
 
-    
+            service.CreateScrumMaster(model);
+
+            return RedirectToAction("Index");
+        }
+    }    
 }
