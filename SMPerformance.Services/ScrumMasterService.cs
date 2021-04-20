@@ -72,5 +72,21 @@ namespace SMPerformance.Services
                     };
             }
         }
+
+        public bool UpdateScrumMaster(ScrumMasterEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumMasters
+                        .Single(e => e.ScrumMasterId == model.ScrumMasterId && e.OwnerId == _userId);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace SMPerformance.WebMVC.Controllers
             return View();
         }
 
+        // POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ScrumMasterCreate model)
@@ -48,11 +49,27 @@ namespace SMPerformance.WebMVC.Controllers
            
         }
 
+        // GET: ScrumMaster/id
         public ActionResult Details(int id)
         {
             var svc = CreateScrumMasterService();
             var model = svc.GetScrumMasterById(id);
 
+            return View(model);
+        }
+
+        // GET: Edit
+        public ActionResult Edit(int id)
+        {
+            var service = CreateScrumMasterService();
+            var detail = service.GetScrumMasterById(id);
+            var model =
+                new ScrumMasterEdit
+                {
+                    ScrumMasterId = detail.ScrumMasterId,
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName
+                };
             return View(model);
         }
 
