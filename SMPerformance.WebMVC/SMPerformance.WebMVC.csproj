@@ -244,6 +244,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\ScrumMaster\Index.cshtml" />
     <Content Include="Views\ScrumMaster\Create.cshtml" />
+    <Content Include="Views\ScrumMaster\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
