@@ -73,6 +73,31 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // POST: Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ScrumMasterEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.ScrumMasterId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateScrumMasterService();
+
+            if (service.UpdateScrumMaster(model))
+            {
+                TempData["SaveResult"] = "Your scrum master was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Scrum master could not be updated.");
+            return View();
+        }
+
         private ScrumMasterService CreateScrumMasterService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
