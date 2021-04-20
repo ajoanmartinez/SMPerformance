@@ -54,5 +54,23 @@ namespace SMPerformance.Services
                 return query.ToArray();
             }
         }
+
+        public ScrumMasterDetail GetScrumMasterById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumMasters
+                        .Single(e => e.ScrumMasterId == id && e.OwnerId == _userId);
+                return
+                    new ScrumMasterDetail
+                    {
+                        ScrumMasterId = entity.ScrumMasterId,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName
+                    };
+            }
+        }
     }
 }

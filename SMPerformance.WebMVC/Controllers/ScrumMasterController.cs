@@ -48,6 +48,14 @@ namespace SMPerformance.WebMVC.Controllers
            
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateScrumMasterService();
+            var model = svc.GetScrumMasterById(id);
+
+            return View(model);
+        }
+
         private ScrumMasterService CreateScrumMasterService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
