@@ -98,6 +98,31 @@ namespace SMPerformance.WebMVC.Controllers
             return View();
         }
 
+        // GET: Delete
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateScrumMasterService();
+            var model = svc.GetScrumMasterById(id);
+
+            return View(model);
+        }
+
+        // POST: Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateScrumMasterService();
+
+            service.DeleteScrumMaster(id);
+
+            TempData["SaveResult"] = "Scrum master deleted.";
+            
+            return RedirectToAction("Index");
+        }
+
         private ScrumMasterService CreateScrumMasterService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

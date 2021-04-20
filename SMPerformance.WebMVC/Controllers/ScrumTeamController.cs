@@ -109,6 +109,7 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // POST: Delete
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeletePost(int id)

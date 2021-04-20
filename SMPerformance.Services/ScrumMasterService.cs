@@ -88,5 +88,20 @@ namespace SMPerformance.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteScrumMaster(int scrumMasterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .ScrumMasters
+                        .Single(e => e.ScrumMasterId == scrumMasterId && e.OwnerId == _userId);
+
+                ctx.ScrumMasters.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

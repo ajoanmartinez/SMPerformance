@@ -246,6 +246,7 @@
     <Content Include="Views\ScrumMaster\Create.cshtml" />
     <Content Include="Views\ScrumMaster\Details.cshtml" />
     <Content Include="Views\ScrumMaster\Edit.cshtml" />
+    <Content Include="Views\ScrumMaster\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
