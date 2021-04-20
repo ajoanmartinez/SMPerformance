@@ -32,17 +32,27 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ScrumMasterCreate model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
+            
+            var service = CreateScrumMasterService();
 
+            if (service.CreateScrumMaster(model))
+            {
+                TempData["SaveResult"] = "Your scrum master was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Scrum master could not be created.");
+
+            return View(model);
+           
+        }
+
+        private ScrumMasterService CreateScrumMasterService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ScrumMasterService(userId);
-
-            service.CreateScrumMaster(model);
-
-            return RedirectToAction("Index");
+            return service;
         }
     }    
 }
