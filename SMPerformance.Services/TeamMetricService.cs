@@ -23,7 +23,9 @@ namespace SMPerformance.Services
                 new TeamMetric()
                 {
                     OwnerId = _userId,
+                    TeamId = model.TeamId,
                     Team = model.TeamId,
+                    ScrumMasterId = model.ScrumMasterId,
                     ScrumMaster = model.ScrumMasterId,
                     Fiscalyear = model.Fiscalyear,
                     FiscalQuarter = (Data.Quarter)model.FiscalQuarter,
