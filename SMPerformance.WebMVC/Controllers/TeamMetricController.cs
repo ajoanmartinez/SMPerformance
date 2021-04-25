@@ -33,18 +33,26 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TeamMetricCreate model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
+          
+            var service = CreateTeamMetricService();
 
+            if (service.CreateTeamMetric(model))
+            {
+                TempData["SaveResult"] = "Your evaluation was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Your evaluation coudl not be created.");
+
+            return View(model);
+        }
+
+        private TeamMetricService CreateTeamMetricService()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new TeamMetricService(userId);
-
-            service.CreateTeamMetric(model);
-
-            return RedirectToAction("Index");
-            
+            return service;
         }
     }
 }
