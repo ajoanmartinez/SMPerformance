@@ -1,4 +1,6 @@
-﻿using SMPerformance.Models;
+﻿using Microsoft.AspNet.Identity;
+using SMPerformance.Models;
+using SMPerformance.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace SMPerformance.WebMVC.Controllers
         // GET: TeamMetric
         public ActionResult Index()
         {
-            var model = new TeamMetricListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamMetricService(userId);
+            var model = service.GetTeamMetrics();
             return View(model);
         }
 
@@ -29,11 +33,18 @@ namespace SMPerformance.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TeamMetricCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamMetricService(userId);
+
+            service.CreateTeamMetric(model);
+
+            return RedirectToAction("Index");
+            
         }
     }
 }
