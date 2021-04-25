@@ -63,6 +63,7 @@
     <Compile Include="ScrumTeamCreate.cs" />
     <Compile Include="ScrumTeamEdit.cs" />
     <Compile Include="ScrumTeamListItem.cs" />
+    <Compile Include="TeamMetricListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
