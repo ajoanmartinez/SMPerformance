@@ -11,11 +11,11 @@ namespace SMPerformance.Models
     {
         [Display(Name="Scrum Team Name")]
         [Required]
-        public int Team { get; set; }
+        public int TeamId { get; set; }
 
         [Display(Name = "Scrum Master Name")]
         [Required]
-        public int ScrumMaster { get; set; }
+        public int ScrumMasterId { get; set; }
 
         [Display(Name = "Fiscal Year")]
         [Required]

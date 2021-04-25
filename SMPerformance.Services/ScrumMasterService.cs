@@ -55,6 +55,14 @@ namespace SMPerformance.Services
             }
         }
 
+        public IEnumerable<ScrumMaster> GetScrumMasterList()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.ScrumMasters.ToList();
+            }
+        }
+
         public ScrumMasterDetail GetScrumMasterById(int id)
         {
             using (var ctx = new ApplicationDbContext())

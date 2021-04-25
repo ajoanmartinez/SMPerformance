@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using SMPerformance.Data;
 using SMPerformance.Models;
 using SMPerformance.Services;
 using System;
@@ -24,8 +25,33 @@ namespace SMPerformance.WebMVC.Controllers
         // GET: TeamMetric/Create
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ScrumTeamService(userId);
+            var service2 = new ScrumMasterService(userId);
+           
+            List<ScrumTeam> scrumTeams = service.GetScrumTeamList().ToList();
 
+            var query = from c in scrumTeams
+                        select new SelectListItem()
+                        {
+                            Value = c.TeamId.ToString(),
+                            Text = c.TeamName
+                        };
+
+            List<ScrumMaster> scrumMasters = service2.GetScrumMasterList().ToList();
+
+            var query2 = from c in scrumMasters
+                        select new SelectListItem()
+                        {
+                            Value = c.ScrumMasterId.ToString(),
+                            Text = c.FirstName+c.LastName
+                        };
+
+            ViewBag.TeamId = query;
+            ViewBag.ScrumMasterId = query2;
             return View();
+
+            
         }
 
         // POST: TeamMetric/Create
@@ -34,7 +60,7 @@ namespace SMPerformance.WebMVC.Controllers
         public ActionResult Create(TeamMetricCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-          
+
             var service = CreateTeamMetricService();
 
             if (service.CreateTeamMetric(model))

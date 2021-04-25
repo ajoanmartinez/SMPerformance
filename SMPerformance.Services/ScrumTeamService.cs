@@ -51,7 +51,16 @@ namespace SMPerformance.Services
                                     DateCreated = e.DateCreated
                                 }
                             );
+
                 return query.ToArray();
+            }
+        }
+
+        public IEnumerable<ScrumTeam> GetScrumTeamList()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.ScrumTeams.ToList();
             }
         }
 
