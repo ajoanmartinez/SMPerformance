@@ -16,5 +16,24 @@ namespace SMPerformance.WebMVC.Controllers
             var model = new TeamMetricListItem[0];
             return View(model);
         }
+
+        // GET: TeamMetric/Create
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+
+        // POST: TeamMetric/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TeamMetricCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
     }
 }

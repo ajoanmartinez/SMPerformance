@@ -249,6 +249,7 @@
     <Content Include="Views\ScrumMaster\Edit.cshtml" />
     <Content Include="Views\ScrumMaster\Delete.cshtml" />
     <Content Include="Views\TeamMetric\Index.cshtml" />
+    <Content Include="Views\TeamMetric\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

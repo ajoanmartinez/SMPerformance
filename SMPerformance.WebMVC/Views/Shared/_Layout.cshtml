@@ -30,6 +30,10 @@
                     {
                         <li>@Html.ActionLink("Scrum Masters", "Index", "ScrumMaster")</li>
                     }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Team Metrics", "Index", "TeamMetric")</li>
+                    }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
