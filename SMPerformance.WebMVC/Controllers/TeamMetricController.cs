@@ -50,7 +50,6 @@ namespace SMPerformance.WebMVC.Controllers
             ViewBag.TeamId = query;
             ViewBag.ScrumMasterId = query2;
             return View();
-
             
         }
 
@@ -84,7 +83,27 @@ namespace SMPerformance.WebMVC.Controllers
         }
 
         // GET: TeamMetric/Edit
+        public ActionResult Edit(int id)
+        {
+            var service = CreateTeamMetricService();
+            var detail = service.GetTeamMetricById(id);
+            var model =
+                new TeamMetricEdit
+                {
+                    EvalId = detail.EvalId,
+                    TeamId = detail.TeamId,
+                    ScrumMasterId = detail.ScrumMasterId,
+                    Fiscalyear = detail.Fiscalyear,
+                    FiscalQuarter = detail.FiscalQuarter,
+                    Velocity = detail.Velocity,
+                    BurnUp = detail.BurnUp,
+                    ProdSupport = detail.ProdSupport,
+                    CustomerRating = detail.CustomerRating,
+                    RatingOfPerformance = detail.RatingOfPerformance
+                };
 
+            return View(model);
+        }
 
         private TeamMetricService CreateTeamMetricService()
         {
