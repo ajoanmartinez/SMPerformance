@@ -22,10 +22,10 @@ namespace SMPerformance.Models
         public int EvalId { get; set; }
 
         [Display(Name = "Scrum Team")]
-        public int Team { get; set; }
+        public string TeamName { get; set; }
 
         [Display(Name = "Scrum Master")]
-        public int ScrumMaster { get; set; }
+        public string ScrumMaster { get; set; }
 
         [Display(Name = "Fiscal Year")]
         public int Fiscalyear { get; set; }

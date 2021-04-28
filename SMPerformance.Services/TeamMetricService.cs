@@ -57,8 +57,8 @@ namespace SMPerformance.Services
                                 new TeamMetricListItem
                                 {
                                     EvalId = e.EvalId,
-                                    Team = e.Team,
-                                    ScrumMaster = e.ScrumMaster,
+                                    TeamName= e.scrumTeam.TeamName,
+                                    ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
                                     Fiscalyear = e.Fiscalyear,
                                     FiscalQuarter = (Models.Quarter)e.FiscalQuarter,
                                     RatingOfPerformance = (Models.PerformanceRating)e.RatingOfPerformance
