@@ -64,6 +64,8 @@
     <Compile Include="ScrumTeamEdit.cs" />
     <Compile Include="ScrumTeamListItem.cs" />
     <Compile Include="TeamMetricCreate.cs" />
+    <Compile Include="TeamMetricDetail.cs" />
+    <Compile Include="TeamMetricEdit.cs" />
     <Compile Include="TeamMetricListItem.cs" />
   </ItemGroup>
   <ItemGroup>

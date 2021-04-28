@@ -74,6 +74,18 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // GET: TeamMetric/Details
+        public ActionResult Details(int id)
+        {
+            var svc = CreateTeamMetricService();
+            var model = svc.GetTeamMetricById(id);
+
+            return View(model);
+        }
+
+        // GET: TeamMetric/Edit
+
+
         private TeamMetricService CreateTeamMetricService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
