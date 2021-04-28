@@ -1,0 +1,84 @@
+﻿@model SMPerformance.Models.TeamMetricDetail
+
+<div>
+    <h4>TeamMetricDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EvalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EvalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScrumMasterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScrumMasterId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiscalyear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiscalyear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BurnUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BurnUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Velocity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Velocity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdSupport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdSupport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrustRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrustRating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EvalId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
