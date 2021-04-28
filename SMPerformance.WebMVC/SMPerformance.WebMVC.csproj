@@ -251,6 +251,7 @@
     <Content Include="Views\TeamMetric\Index.cshtml" />
     <Content Include="Views\TeamMetric\Create.cshtml" />
     <Content Include="Views\TeamMetric\Details.cshtml" />
+    <Content Include="Views\TeamMetric\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

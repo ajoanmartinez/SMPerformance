@@ -87,6 +87,30 @@ namespace SMPerformance.WebMVC.Controllers
         {
             var service = CreateTeamMetricService();
             var detail = service.GetTeamMetricById(id);
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service2 = new ScrumTeamService(userId);
+            var service3 = new ScrumMasterService(userId);
+
+            List<ScrumTeam> scrumTeams = service2.GetScrumTeamList().ToList();
+
+            var query = from c in scrumTeams
+                        select new SelectListItem()
+                        {
+                            Value = c.TeamId.ToString(),
+                            Text = c.TeamName
+                        };
+
+            List<ScrumMaster> scrumMasters = service3.GetScrumMasterList().ToList();
+
+            var query2 = from c in scrumMasters
+                         select new SelectListItem()
+                         {
+                             Value = c.ScrumMasterId.ToString(),
+                             Text = c.FirstName + c.LastName
+                         };
+
+            
             var model =
                 new TeamMetricEdit
                 {
@@ -102,8 +126,38 @@ namespace SMPerformance.WebMVC.Controllers
                     RatingOfPerformance = detail.RatingOfPerformance
                 };
 
+            ViewBag.TeamId = query;
+            ViewBag.ScrumMasterId = query2;
+
             return View(model);
         }
+
+        // POST: Teammetric/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TeamMetricEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.EvalId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateTeamMetricService();
+
+            if (service.UpdateTeamMetric(model))
+            {
+                TempData["SaveResult"] = "Your evaluation was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your evaluation could not be updated.");
+            return View(model);
+        }
+
+
 
         private TeamMetricService CreateTeamMetricService()
         {

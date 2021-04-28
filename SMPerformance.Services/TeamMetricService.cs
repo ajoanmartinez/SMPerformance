@@ -106,18 +106,21 @@ namespace SMPerformance.Services
                 var entity =
                     ctx
                         .TeamMetrics
-                        .Single(e => e.TeamId == model.TeamId && e.OwnerId == _userId);
+                        .Single(e => e.EvalId == model.EvalId && e.OwnerId == _userId);
 
+                
                 entity.TeamId = model.TeamId;
+                entity.Team = model.TeamId;
                 entity.ScrumMasterId = model.ScrumMasterId;
+                entity.ScrumMaster = model.ScrumMasterId;
                 entity.Fiscalyear = model.Fiscalyear;
                 entity.FiscalQuarter = (Data.Quarter)model.FiscalQuarter;
-                entity.BurnUp = entity.BurnUp;
-                entity.Velocity = entity.Velocity;
-                entity.ProdSupport = entity.ProdSupport;
-                entity.CustomerRating = entity.CustomerRating;
-                entity.TrustRating = entity.TrustRating;
-                entity.RatingOfPerformance = (Data.PerformanceRating)entity.RatingOfPerformance;
+                entity.BurnUp = model.BurnUp;
+                entity.Velocity = model.Velocity;
+                entity.ProdSupport = model.ProdSupport;
+                entity.CustomerRating = model.CustomerRating;
+                entity.TrustRating = model.TrustRating;
+                entity.RatingOfPerformance = (Data.PerformanceRating)model.RatingOfPerformance;
 
                 return ctx.SaveChanges() == 1;
 
