@@ -75,13 +75,15 @@ namespace SMPerformance.Services
                 var entity =
                     ctx
                         .TeamMetrics
-                        .Single(e => e.TeamId == id && e.OwnerId == _userId);
+                        .Single(e => e.EvalId == id && e.OwnerId == _userId);
                 return
                     new TeamMetricDetail
                     {
                         EvalId = entity.EvalId,
                         TeamId = entity.TeamId,
+                        TeamName = entity.scrumTeam.TeamName,
                         ScrumMasterId = entity.ScrumMaster,
+                        ScrumMaster = entity.scrumMaster.FirstName+" "+entity.scrumMaster.LastName,
                         Fiscalyear = entity.Fiscalyear,
                         FiscalQuarter = (Models.Quarter)entity.FiscalQuarter,
                         BurnUp = entity.BurnUp,

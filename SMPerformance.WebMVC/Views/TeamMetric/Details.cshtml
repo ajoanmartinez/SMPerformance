@@ -1,4 +1,5 @@
 ﻿@model SMPerformance.Models.TeamMetricDetail
+@using SMPerformance.Data
 
 <div>
     <h4>TeamMetricDetail</h4>
@@ -13,19 +14,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TeamId)
+            @Html.DisplayNameFor(model => model.TeamName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TeamId)
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dd>
+            @Html.HiddenFor(model => model.TeamId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ScrumMasterId)
+            @Html.DisplayNameFor(model => model.ScrumMaster)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ScrumMasterId)
+            @Html.DisplayFor(model => model.ScrumMaster)
+        </dd>
+
+        <dd>
+            @Html.HiddenFor(model => model.ScrumMasterId)
         </dd>
 
         <dt>
