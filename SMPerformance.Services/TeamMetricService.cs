@@ -124,10 +124,23 @@ namespace SMPerformance.Services
 
                 return ctx.SaveChanges() == 1;
 
-
             }
 
+        }
 
+        public bool DeleteTeamMetric(int evalId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .TeamMetrics
+                        .Single(e => e.EvalId == evalId && e.OwnerId == _userId);
+
+                ctx.TeamMetrics.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }

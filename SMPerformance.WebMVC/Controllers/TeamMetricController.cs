@@ -157,6 +157,29 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // GET: TeamMetric/Delete
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateTeamMetricService();
+            var model = svc.GetTeamMetricById(id);
+
+            return View(model);
+        }
+
+        // POST: TeamMetric/Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateTeamMetricService();
+
+            service.DeleteTeamMetric(id);
+
+            TempData["SaveResult"] = "Your evaluation was deleted.";
+
+            return RedirectToAction("Index");
+        }
 
 
         private TeamMetricService CreateTeamMetricService()
