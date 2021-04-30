@@ -27,6 +27,8 @@ namespace SMPerformance.Models
         [Display(Name = "Scrum Master")]
         public string ScrumMaster { get; set; }
 
+        public int ScrumMasterId { get; set; }
+
         [Display(Name = "Fiscal Year")]
         public int Fiscalyear { get; set; }
 

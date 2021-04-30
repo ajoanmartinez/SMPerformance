@@ -22,6 +22,15 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // Get: TeamMetrics/ScrumMaster{id}
+        public ActionResult ScrumMasterIndex(int scrumMasterId)
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamMetricService(userId);
+            var model = service.GetTeamMetricsByScrumMaster(scrumMasterId);
+            return View(model);
+        }
+
         // GET: TeamMetric/Create
         public ActionResult Create()
         {

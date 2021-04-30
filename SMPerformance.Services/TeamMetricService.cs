@@ -57,7 +57,33 @@ namespace SMPerformance.Services
                                 new TeamMetricListItem
                                 {
                                     EvalId = e.EvalId,
+                                    ScrumMasterId = e.ScrumMasterId,
                                     TeamName= e.scrumTeam.TeamName,
+                                    ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
+                                    Fiscalyear = e.Fiscalyear,
+                                    FiscalQuarter = (Models.Quarter)e.FiscalQuarter,
+                                    RatingOfPerformance = (Models.PerformanceRating)e.RatingOfPerformance
+                                }
+                            );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<TeamMetricListItem> GetTeamMetricsByScrumMaster(int scrumMasterId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .TeamMetrics
+                        .Where(e => e.ScrumMasterId == scrumMasterId && e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new TeamMetricListItem
+                                {
+                                    EvalId = e.EvalId,
+                                    ScrumMasterId = e.ScrumMasterId,
+                                    TeamName = e.scrumTeam.TeamName,
                                     ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
                                     Fiscalyear = e.Fiscalyear,
                                     FiscalQuarter = (Models.Quarter)e.FiscalQuarter,
