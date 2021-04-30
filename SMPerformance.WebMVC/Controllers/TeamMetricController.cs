@@ -31,6 +31,15 @@ namespace SMPerformance.WebMVC.Controllers
             return View(model);
         }
 
+        // Get: TeamMetrics/Team{id}
+        public ActionResult ScrumTeamIndex(int teamId)
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamMetricService(userId);
+            var model = service.GetTeamMetricsByScrumTeam(teamId);
+            return View(model);
+        }
+
         // GET: TeamMetric/Create
         public ActionResult Create()
         {

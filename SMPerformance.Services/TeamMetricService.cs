@@ -58,6 +58,7 @@ namespace SMPerformance.Services
                                 {
                                     EvalId = e.EvalId,
                                     ScrumMasterId = e.ScrumMasterId,
+                                    TeamId= e.TeamId,
                                     TeamName= e.scrumTeam.TeamName,
                                     ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
                                     Fiscalyear = e.Fiscalyear,
@@ -83,6 +84,32 @@ namespace SMPerformance.Services
                                 {
                                     EvalId = e.EvalId,
                                     ScrumMasterId = e.ScrumMasterId,
+                                    TeamName = e.scrumTeam.TeamName,
+                                    ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
+                                    Fiscalyear = e.Fiscalyear,
+                                    FiscalQuarter = (Models.Quarter)e.FiscalQuarter,
+                                    RatingOfPerformance = (Models.PerformanceRating)e.RatingOfPerformance
+                                }
+                            );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<TeamMetricListItem> GetTeamMetricsByScrumTeam(int teamId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .TeamMetrics
+                        .Where(e => e.ScrumMasterId == teamId && e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new TeamMetricListItem
+                                {
+                                    EvalId = e.EvalId,
+                                    ScrumMasterId = e.ScrumMasterId,
+                                    TeamId = e.TeamId,
                                     TeamName = e.scrumTeam.TeamName,
                                     ScrumMaster = e.scrumMaster.FirstName + " " + e.scrumMaster.LastName,
                                     Fiscalyear = e.Fiscalyear,
