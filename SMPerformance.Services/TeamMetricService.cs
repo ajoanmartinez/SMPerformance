@@ -102,7 +102,7 @@ namespace SMPerformance.Services
                 var query =
                     ctx
                         .TeamMetrics
-                        .Where(e => e.ScrumMasterId == teamId && e.OwnerId == _userId)
+                        .Where(e => e.TeamId == teamId && e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new TeamMetricListItem
