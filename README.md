@@ -2,7 +2,6 @@
 ---
 
 An MVC.NET Web application to enable capture of key metrics of all of a single organization’s scrum teams’ performance on a quarterly basis, tracking and modifying scrum teams, scrum masters, and multiple evaluations associated with them, so that it can be utilized as a dashboard to measure the effectiveness and performance of  a team’s assigned Scrum Master over multiple quarters.
-How To Use
 
 ## How To Use
 To use SMPerformance, clone the repository, open it in Visual Studio, and run (IIS Express). This will pull up a web page that will allow you to navigate to any of the index views for Scrum Teams, Scrum Masters, or Team Metrics . Each index view is set up with intuitive action links that will assist users with navigating through the application, and can be used as a reference for future code enhancements.
