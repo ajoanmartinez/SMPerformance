@@ -1,0 +1,98 @@
+﻿@model SMPerformance.Models.TeamMetricDetail
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Evaluation Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EvalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EvalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dd>
+            @Html.HiddenFor(model => model.TeamId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScrumMaster)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScrumMaster)
+        </dd>
+
+        <dd>
+            @Html.HiddenFor(model => model.ScrumMasterId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiscalyear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiscalyear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BurnUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BurnUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Velocity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Velocity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdSupport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdSupport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrustRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrustRating)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

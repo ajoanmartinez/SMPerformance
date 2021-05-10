@@ -55,6 +55,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrumMasterCreate.cs" />
+    <Compile Include="ScrumMasterDetail.cs" />
+    <Compile Include="ScrumMasterEdit.cs" />
+    <Compile Include="ScrumMasterListItem.cs" />
+    <Compile Include="ScrumTeamDetail.cs" />
+    <Compile Include="ScrumTeamCreate.cs" />
+    <Compile Include="ScrumTeamEdit.cs" />
+    <Compile Include="ScrumTeamListItem.cs" />
+    <Compile Include="TeamMetricCreate.cs" />
+    <Compile Include="TeamMetricDetail.cs" />
+    <Compile Include="TeamMetricEdit.cs" />
+    <Compile Include="TeamMetricListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
